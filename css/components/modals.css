@@ -233,6 +233,9 @@
     cursor: pointer;
     font-size: 20px;
     color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.2s;
 }
 
@@ -243,89 +246,92 @@
 .marker-manage-body {
     flex: 1;
     overflow-y: auto;
-   padding: 24px;
+    padding: 24px;
 }
 
 /* 备份配置模态框 */
 .backup-config-modal {
-   display: none;
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background: rgba(0, 0, 0, 0.7);
-   z-index: 2000;
-   align-items: center;
-   justify-content: center;
-   padding: 20px;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .backup-config-modal.active {
-   display: flex;
+    display: flex;
 }
 
 .backup-config-content {
-   background: white;
-   border-radius: 16px;
-   max-width: 500px;
-   width: 100%;
-   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: white;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .backup-config-header {
-   padding: 24px;
-   border-bottom: 1px solid #e5e7eb;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .backup-config-header h2 {
-   font-size: 20px;
-   color: #1f2937;
-   margin: 0;
+    font-size: 20px;
+    color: #1f2937;
+    margin: 0;
 }
 
 .backup-config-close {
-   width: 32px;
-   height: 32px;
-   border: none;
-   background: #f3f4f6;
-   border-radius: 50%;
-   cursor: pointer;
-   font-size: 20px;
-   color: #6b7280;
-   transition: all 0.2s;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f3f4f6;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
 }
 
 .backup-config-close:hover {
-   background: #e5e7eb;
+    background: #e5e7eb;
 }
 
 .backup-config-body {
-   padding: 24px;
+    padding: 24px;
 }
 
 /* 加载动画遮罩 */
 .loading-overlay {
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background: rgba(0, 0, 0, 0.5);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
 
 .loading-spinner {
-   width: 50px;
-   height: 50px;
-   border: 4px solid rgba(255, 255, 255, 0.3);
-   border-top-color: white;
-   border-radius: 50%;
-   animation: spin 0.8s linear infinite;
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
 }

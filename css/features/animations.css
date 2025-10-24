@@ -53,7 +53,7 @@
     }
 }
 
-/* 滑入动画 */
+/* 滑入动画 - 已移除 memo-item 的自动应用 */
 @keyframes slideIn {
     from {
         transform: translateX(-100%);
@@ -65,7 +65,8 @@
     }
 }
 
-.memo-item {
+/* 如果需要滑入动画，可以手动添加 .slide-in 类 */
+.slide-in {
     animation: slideIn 0.3s ease;
 }
 
