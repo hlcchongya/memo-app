@@ -1,0 +1,68 @@
+/* ============================================
+   拖拽上传覆盖层样式
+   ============================================ */
+
+/* 拖拽覆盖层 */
+.drop-zone-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(102, 126, 234, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* 隐藏状态 */
+.drop-zone-overlay.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+/* 显示状态（拖拽时） */
+.drop-zone-overlay.active {
+    display: flex !important;
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* 覆盖层内容 */
+.drop-zone-content {
+    text-align: center;
+    color: white;
+    animation: float 2s ease-in-out infinite;
+}
+
+.drop-zone-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+}
+
+.drop-zone-text {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.drop-zone-subtext {
+    font-size: 18px;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 浮动动画（如果animations.css没有定义） */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
