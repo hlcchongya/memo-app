@@ -1,0 +1,53 @@
+/* ============================================
+   输入框组件样式
+   ============================================ */
+
+/* 搜索框输入 */
+.search-box input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 备忘录标题输入 */
+.memo-title-input {
+    width: 100%;
+    font-size: 28px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    padding: 8px 0;
+    color: #1f2937;
+}
+
+.memo-title-input::placeholder {
+    color: #d1d5db;
+}
+
+/* 备忘录内容输入 */
+.memo-content-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #374151;
+    font-family: inherit;
+    min-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.memo-content-input::placeholder {
+    color: #d1d5db;
+}

@@ -1,0 +1,145 @@
+/* ============================================
+   附件标记系统样式
+   ============================================ */
+
+.attachment-marker {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    margin: 0 2px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.25);
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    -webkit-user-drag: none;
+}
+
+.attachment-marker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.attachment-marker:hover::before {
+    left: 100%;
+}
+
+.attachment-marker:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.attachment-marker:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+/* 图片标记 */
+.attachment-marker.image {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    box-shadow: 0 2px 4px rgba(250, 112, 154, 0.25);
+}
+
+.attachment-marker.image:hover {
+    box-shadow: 0 4px 12px rgba(250, 112, 154, 0.4);
+}
+
+/* 文件标记 */
+.attachment-marker.file {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    box-shadow: 0 2px 4px rgba(48, 207, 208, 0.25);
+}
+
+.attachment-marker.file:hover {
+    box-shadow: 0 4px 12px rgba(48, 207, 208, 0.4);
+}
+
+.attachment-marker .marker-icon {
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.attachment-marker .marker-name {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+/* 标记管理面板 */
+.marker-manage-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.marker-list-container {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.marker-list-empty {
+    text-align: center;
+    color: #9ca3af;
+    padding: 40px;
+}
+
+.marker-list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 2px solid #e5e7eb;
+    transition: all 0.2s;
+}
+
+.marker-list-item:hover {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+.marker-list-preview {
+    flex-shrink: 0;
+}
+
+.marker-list-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.marker-list-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.marker-list-type {
+    font-size: 12px;
+    color: #6b7280;
+}

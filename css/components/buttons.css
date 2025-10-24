@@ -1,0 +1,364 @@
+/* ============================================
+   按钮组件样式
+   ============================================ */
+
+/* 新建按钮 */
+.btn-new {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-new:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-new .icon {
+    font-size: 20px;
+}
+
+/* 导出导入按钮 */
+.btn-export,
+.btn-import {
+    padding: 8px 12px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-export:hover,
+.btn-import:hover {
+    background: #e5e7eb;
+}
+
+/* 版本历史按钮 */
+.btn-history {
+    width: 100%;
+    padding: 10px 12px;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-history:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+}
+
+/* 自动备份按钮 */
+.btn-auto-backup {
+    flex: 1;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-auto-backup:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.btn-config-backup {
+    width: 40px;
+    padding: 10px;
+    background: #6b7280;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-config-backup:hover {
+    background: #4b5563;
+}
+
+/* 添加图片按钮 */
+.btn-add-image {
+    padding: 8px 16px;
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-image:hover {
+    background: #e5e7eb;
+}
+
+/* 添加文件按钮 */
+.btn-add-file {
+    padding: 8px 16px;
+    background: #3b82f6;
+    color: white;
+    border: 1px solid #2563eb;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-file:hover {
+    background: #2563eb;
+    border-color: #1d4ed8;
+}
+
+/* 统计按钮 */
+.btn-statistics {
+    flex: 1;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-statistics:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+}
+
+/* 删除按钮（备忘录列表项） */
+.btn-delete-memo-item {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.memo-item:hover .btn-delete-memo-item {
+    opacity: 1;
+}
+
+.btn-delete-memo-item:hover {
+    background: rgba(220, 38, 38, 1);
+    transform: scale(1.1);
+}
+
+.btn-delete-memo-item:active {
+    transform: scale(0.95);
+}
+
+/* 图片删除按钮 */
+.image-remove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    background: rgba(239, 68, 68, 0.95);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-item:hover .image-remove {
+    opacity: 1;
+}
+
+.image-remove:hover {
+    background: rgba(220, 38, 38, 1);
+    transform: scale(1.1);
+}
+
+/* 文件操作按钮 */
+.file-action-btn {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.file-action-btn.download {
+    background: #10b981;
+    color: white;
+}
+
+.file-action-btn.download:hover {
+    background: #059669;
+}
+
+.file-action-btn.delete {
+    background: #ef4444;
+    color: white;
+}
+
+.file-action-btn.delete:hover {
+    background: #dc2626;
+}
+
+/* 版本恢复和删除按钮 */
+.btn-restore,
+.btn-delete-version {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-restore {
+    background: #8b5cf6;
+    color: white;
+}
+
+.btn-restore:hover {
+    background: #7c3aed;
+}
+
+.btn-delete-version {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-delete-version:hover {
+    background: #dc2626;
+}
+
+/* 标记管理按钮 */
+.marker-manage-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    transition: all 0.3s;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.editor-area.active ~ .marker-manage-btn {
+    display: flex;
+}
+
+.marker-manage-btn:hover {
+    background: #d97706;
+    transform: scale(1.1);
+}
+
+/* 管理面板内部按钮 */
+.manage-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.manage-btn:hover {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+.marker-list-locate {
+    padding: 4px 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.marker-list-locate:hover {
+    background: #5568d3;
+}
+
+/* 统计按钮 */
+.btn-stats {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+    transition: all 0.3s;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-stats:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(236, 72, 153, 0.5);
+}

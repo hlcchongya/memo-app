@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 备忘录</title>
+    
+    <!-- 基础样式 -->
+    <link rel="stylesheet" href="css/base/reset.css">
+    <link rel="stylesheet" href="css/base/variables.css">
+    <link rel="stylesheet" href="css/base/scrollbar.css">
+    
+    <!-- 布局样式 -->
+    <link rel="stylesheet" href="css/layout/sidebar.css">
+    <link rel="stylesheet" href="css/layout/main-content.css">
+    <link rel="stylesheet" href="css/layout/editor.css">
+    
+    <!-- 组件样式 -->
+    <link rel="stylesheet" href="css/components/buttons.css">
+    <link rel="stylesheet" href="css/components/inputs.css">
+    <link rel="stylesheet" href="css/components/modals.css">
+    
+    <!-- 功能模块样式 -->
+    <link rel="stylesheet" href="css/features/memo-list.css">
+    <link rel="stylesheet" href="css/features/attachments.css">
+    <link rel="stylesheet" href="css/features/markers.css">
+    <link rel="stylesheet" href="css/features/versions.css">
+    <link rel="stylesheet" href="css/features/statistics.css">
+    <link rel="stylesheet" href="css/features/animations.css">
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+        <!-- 头部 -->
+        <div class="sidebar-header">
+            <h1>📌 备忘录</h1>
+            <button class="btn-new" onclick="createNewMemo()">
+                <span class="icon">+</span> 新建
+            </button>
+        </div>
+
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索备忘录..." oninput="searchMemos()">
+        </div>
+
+        <!-- 备忘录计数 -->
+        <div class="memo-count">
+            共 <span id="memoCount">0</span> 条备忘
+        </div>
+        
+        <!-- 导出导入工具栏 -->
+        <div class="toolbar-actions" style="margin-top: 8px;">
+            <button class="btn-export" onclick="exportData()" title="手动导出">📥 导出</button>
+            <button class="btn-import" onclick="document.getElementById('importInput').click()" title="导入数据">📤 导入</button>
+            <input type="file" id="importInput" accept=".json" style="display: none;" onchange="importData(event)">
+        </div>
+
+        <!-- 版本历史按钮 -->
+        <div class="toolbar-actions" style="margin-top: 8px;">
+            <button class="btn-history" onclick="showVersionHistory()" title="查看版本历史">
+             🕐 版本历史
+           </button>
+        </div>
+
+
+        <!-- 备份状态提示 -->
+        <div id="backupStatus" class="backup-status" style="display: none;"></div>
+
+        <!-- 备忘录列表 -->
+        <div id="memoList" class="memo-list"></div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 编辑器区域 -->
+        <!-- 编辑器区域 -->
+<div id="editorArea" class="editor-area">
+    <!-- 左侧：编辑区 -->
+    <div class="editor-left">
+        <!-- 编辑器头部 -->
+        <div class="editor-header">
+            <input type="text" id="memoTitle" class="memo-title-input" placeholder="输入标题...">
+        </div>
+
+        <!-- 日期信息 -->
+        <div class="editor-meta">
+            <span id="currentDate"></span>
+        </div>
+
+        <!-- 图片工具栏 -->
+        <div class="editor-toolbar">
+            <!-- 图片上传 -->
+            <button class="btn-add-image" onclick="document.getElementById('memoContent').focus(); document.getElementById('imageInput').click();">
+                🖼️ 添加图片
+            </button>
+            <input type="file" id="imageInput" accept="image/*" multiple style="display: none;" onchange="handleImageUpload(event)">
+
+            <!-- 文件上传 -->
+            <button class="btn-add-file" onclick="document.getElementById('memoContent').focus(); document.getElementById('fileInput').click();">
+                📎 添加文件
+            </button>
+            <input type="file" id="fileInput" multiple style="display: none;" onchange="handleFileUpload(event)">
+
+            <span class="image-tip">（支持 JPG、PNG、GIF）</span>
+        </div>
+
+
+        <!-- 内容编辑区 -->
+        <div id="memoContent"
+            class="memo-content-input"
+            contenteditable="true"
+            data-placeholder="开始输入内容..."
+            spellcheck="false">
+        </div>
+
+    </div>
+
+    <!-- 右侧：图片和文件区 -->
+    <div class="editor-right">
+        <div class="editor-right-header">
+            <h3>📎 附件</h3>
+            <span class="attachment-count" id="attachmentCount">0 项</span>
+        </div>
+
+        <!-- 图片画廊 -->
+        <div class="right-section">
+            <div class="section-title">🖼️ 图片</div>
+            <div id="imageGallery" class="image-gallery"></div>
+        </div>
+
+        <!-- 文件列表 -->
+        <div class="right-section">
+            <div class="section-title">📁 文件</div>
+            <div id="fileList" class="file-list"></div>
+        </div>
+    </div>
+
+    <!-- 拖拽上传提示覆盖层 -->
+    <div id="dropZoneOverlay" class="drop-zone-overlay hidden">
+        <div class="drop-zone-content">
+            <div class="drop-zone-icon">📁</div>
+            <div class="drop-zone-text">拖放图片或文件到这里</div>
+            <div class="drop-zone-subtext">支持多个文件同时上传</div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- 空状态提示 -->
+        <div id="emptyState" class="empty-state">
+            <div class="empty-icon">📝</div>
+            <h2>选择或创建备忘录</h2>
+            <p>从左侧列表选择一个备忘录，或点击"新建"按钮创建新的备忘录</p>
+        </div>
+    </main>
+
+    <!-- 标记管理面板 -->
+<div id="markerManagePanel" class="marker-manage-panel hidden">
+    <div class="panel-header">
+        <h3>📎 标记管理</h3>
+        <button class="close-panel" onclick="toggleMarkerManagePanel()">×</button>
+    </div>
+    <div class="panel-content">
+        <div class="manage-stats" id="markerStats">
+            <div class="stat-item">
+                <span class="stat-label">图片标记</span>
+                <span class="stat-value" id="imageMarkerCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">文件标记</span>
+                <span class="stat-value" id="fileMarkerCount">0</span>
+            </div>
+        </div>
+
+        <div class="manage-actions">
+            <button class="manage-btn" onclick="sortMarkers()">
+                <span>🔄</span> 重新排序
+            </button>
+            <button class="manage-btn" onclick="removeAllMarkers()">
+                <span>🗑️</span> 清除所有标记
+            </button>
+            <button class="manage-btn" onclick="syncMarkers()">
+                <span>🔗</span> 同步附件
+            </button>
+        </div>
+
+        <div class="marker-list" id="manageMarkerList"></div>
+    </div>
+</div>
+
+<!-- 管理按钮 - 移到 body 末尾，main 之后 -->
+<button class="marker-manage-btn" onclick="toggleMarkerManagePanel()" title="标记管理" style="display: none;">
+    🏷️
+</button>
+
+
+
+    <!-- 引入JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
